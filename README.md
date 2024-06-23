@@ -23,6 +23,7 @@
 - Improvements
   - Keeps data near processing workers (geographic location) 
 - Map-Reduce model
+- ![Screenshot 2024-06-23 at 5 31 06 PM](https://github.com/vnscriptkid/sd-map-reduce/assets/28957748/8ddc99d1-82ec-4703-a98b-2576bc2aad4d)
 ```js
 const bigFile = `a b c a a d d d a`;
 const split1 = `a b c` // -> worker1
