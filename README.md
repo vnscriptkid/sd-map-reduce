@@ -22,3 +22,36 @@
   - #chunkFiles === #splits
 - Improvements
   - Keeps data near processing workers (geographic location) 
+- Map-Reduce model
+```js
+const bigFile = `a b c a a d d d a`;
+const split1 = `a b c` // -> worker1
+const split2 = `a a d` // -> worker2
+const split3 = `d d a` // -> worker3
+
+// Map step
+// Worker 1
+const split1Words = split1.split(' ') // ['a', 'b', 'c']
+const map1 = {}
+for (let word of split1Words) {
+  if (!(word in map1)) map1[word] = 0;
+  map1[word] += 1;
+}
+// map1: {a: 1, b: 1: c: 1}
+
+// Worker 2
+// map2: {a: 2, d: 1}
+
+// Worker 3
+// map3: {d: 2, a: 1}
+```
+
+// Reduce step
+const bigMap = {
+  split1: {a: 1, b: 1, c: 1},
+  split2: {a: 2, d: 1},
+  split3: {d: 2, a: 1}
+}
+
+const finalOutput = reduce(bigMap)
+// { a: 4, b: 1, c: 1, d: 3 }
