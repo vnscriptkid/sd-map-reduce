@@ -18,3 +18,7 @@
       - Split B: Completed but not yet flushed to Distributed storage -> Reassign to another worker
       - Split C: Completed and ALREADY pushed to Distributed storage -> N/A
   - Master fails: backup master (not mentioned in whitepaper)
+- Output (stored in distributed storage)
+  - #chunkFiles === #splits
+- Improvements
+  - Keeps data near processing workers (geographic location) 
