@@ -37,14 +37,13 @@ for (let word of split1Words) {
   if (!(word in map1)) map1[word] = 0;
   map1[word] += 1;
 }
-// map1: {a: 1, b: 1: c: 1}
+// split1: {a: 1, b: 1: c: 1}
 
 // Worker 2
-// map2: {a: 2, d: 1}
+// split2: {a: 2, d: 1}
 
 // Worker 3
-// map3: {d: 2, a: 1}
-```
+// split3: {d: 2, a: 1}
 
 // Reduce step
 const bigMap = {
@@ -55,3 +54,5 @@ const bigMap = {
 
 const finalOutput = reduce(bigMap)
 // { a: 4, b: 1, c: 1, d: 3 }
+
+```
