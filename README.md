@@ -8,5 +8,13 @@
 - 1 Master - N Workers
 - Master keeps track of process of each Split (Which worker owns it, What's status)
 - Worker gets data directly from source not through Master (reduce load for master)
-- Worker processes data, keeps locally, and flush to distributed storage
-- TODO: Fault tolerance
+- Worker processes data, store in RAM (fast), flush to disk, (may flush to distributed storage)
+- E.g: slit 2D matrix, gg search
+- Fault tolerance
+  - Worker fails
+    - How master knows work fails? Heartbeat
+    - Scenarios:
+      - Split A: Not completed -> Reassign to another worker
+      - Split B: Completed but not yet flushed to Distributed storage -> Reassign to another worker
+      - Split C: Completed and ALREADY pushed to Distributed storage -> N/A
+  - Master fails: backup master (not mentioned in whitepaper)
