@@ -1,0 +1,8 @@
+Hello Hadoop
+Hello World
+Hadoop is great
+Hadoop is powerful
+World of Hadoop
+Big Data with Hadoop
+Hadoop and MapReduce
+MapReduce is powerful

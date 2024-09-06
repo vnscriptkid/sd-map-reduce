@@ -1,0 +1,42 @@
+services:
+   namenode:
+      image: apache/hadoop:3
+      hostname: namenode
+      command: ["hdfs", "namenode"]
+      ports:
+        - 9870:9870
+      env_file:
+        - ./config
+      volumes:
+        # Copy the JAR file to the namenode container
+        - ./wordcount/target/hadoop-wordcount-1.0-SNAPSHOT.jar:/wordcount.jar
+        # Copy the input file to the namenode container
+        - ./input.txt:/input.txt
+      environment:
+          ENSURE_NAMENODE_DIR: "/tmp/hadoop-root/dfs/name"
+   datanode:
+      image: apache/hadoop:3
+      command: ["hdfs", "datanode"]
+      env_file:
+        - ./config      
+   resourcemanager:
+      image: apache/hadoop:3
+      hostname: resourcemanager
+      command: ["yarn", "resourcemanager"]
+      ports:
+         - 8088:8088
+      env_file:
+        - ./config
+      volumes:
+        - ./test.sh:/opt/test.sh
+   nodemanager:
+      image: apache/hadoop:3
+      command: ["yarn", "nodemanager"]
+      env_file:
+        - ./config
+   maven:
+      image: maven:3.8.5-openjdk-8
+      command: ["mvn", "clean", "package"]
+      volumes:
+        - ./wordcount:/usr/src/mymaven
+      working_dir: /usr/src/mymaven
