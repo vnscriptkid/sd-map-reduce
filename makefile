@@ -24,3 +24,11 @@ run-all:
 	make copy-input-hdfs
 	make run-wordcount
 	make output-wordcount
+
+# UI NameNode
+ui_namenode:
+	open http://localhost:9870
+
+# UI ResourceManager
+ui_resourcemanager:
+	open http://localhost:8088
