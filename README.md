@@ -57,3 +57,8 @@ const finalOutput = reduce(bigMap)
 // { a: 4, b: 1, c: 1, d: 3 }
 
 ```
+
+## QnA
+- What determine the number of nodes that run map tasks?
+  - Number of data splits (blocks), number of nodes available
+  - 1Gb data ~ 8 splits (128MB) -> 8 nodes if possible
