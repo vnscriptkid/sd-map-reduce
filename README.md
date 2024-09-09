@@ -62,3 +62,8 @@ const finalOutput = reduce(bigMap)
 - What determine the number of nodes that run map tasks?
   - Number of data splits (blocks), number of nodes available
   - 1Gb data ~ 8 splits (128MB) -> 8 nodes if possible
+- What determine the number of reducers?
+  - By default, there's 1 reducer (1 node that processes reducer task)
+  - We can customize that as arg during startup
+![image](https://github.com/user-attachments/assets/ffda9e54-c6f6-4a8a-abf5-a5402d099e0d)
+
